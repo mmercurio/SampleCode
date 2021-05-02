@@ -1,3 +1,7 @@
+# A couple of FizzBuzz solutions in Ruby just for fun
+
+# My first attempt.
+# Returns classic FizzBuzz sequence of all integers between 1 and maxn, inclusive.
 def fizzbuzz(maxn)
     results = []
     (1..maxn).each do |i|
@@ -14,15 +18,17 @@ def fizzbuzz(maxn)
     results
 end
 
-# FizzBuzz mulitples and substituion words
+# FizzBuzz mulitples and substitution words
 MULTIPLES = {
     3 => 'fizz',
     5 => 'buzz'
 }
 
-# generic version that uses MULTIPLES hash to control
-# which multiples and their words are substitated for
-# each number in the sequence
+# A generic version of FizzBuzz that uses the MULTIPLES hash to control
+# which multiples and their words are substitated for each number in the sequence
+# between 1 and maxn, inclusive.
+# Optionally, a customized multiples hash may be used for more interesteing
+# varations on the classic FizzBuzz game.
 def generate_fizzbuzz(maxn, multiples=MULTIPLES)
     results = []
     (1..maxn).each do |i|
