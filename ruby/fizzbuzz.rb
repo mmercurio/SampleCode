@@ -46,3 +46,25 @@ def generate_fizzbuzz(maxn, multiples=MULTIPLES)
     end
     results
 end
+
+RSpec.describe 'generate_fizzbuzz' do
+    it 'uses the defaults when multiples not present' do
+        raise unless generate_fizzbuzz(15) ==
+            [1, 2, 'fizz', 4, 'buzz', 'fizz', 7, 8, 'fizz', 'buzz', 11, 'fizz', 13, 14, 'fizzbuzz']
+    end
+
+    it 'stops at maxn' do
+        raise unless generate_fizzbuzz(1) == [1]
+    end
+
+    it 'uses an empty multiples' do
+        raise unless generate_fizzbuzz(15, {}) ==
+            [1, 2, 3, 4, 5, 6 ,7, 8, 9, 10, 11, 12, 13, 14, 15]
+    end
+
+    it 'uses specified multiples' do
+        specified_mulitples = { 3 => 'fizz', 4 => 'razz' }
+        raise unless generate_fizzbuzz(13, specified_mulitples) ==
+            [1, 2, 'fizz', 'razz', 5, 'fizz', 7, 'razz', 'fizz', 10, 11, 'fizzrazz', 13]
+    end
+end

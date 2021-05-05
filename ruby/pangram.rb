@@ -17,3 +17,23 @@ def pangram?(text)
     end
     result
 end
+
+RSpec.describe 'the pangram? function returns true' do
+    it 'when input is a pangram' do
+        raise unless pangram?('qwertyuiopasdfghjklzxcvbnm') == true
+    end
+
+    it 'when input is a pangram with uppercase chars' do
+        raise unless pangram?('QWERTYUIOPASDFGHJKLZXCVBNM') == true
+    end
+
+    it 'when input is a pangram with nonalhabetic chars' do
+        raise unless pangram?(' 01234 ;,.!? qwertyuiopasdfghjklzxcvbnm') == true
+    end
+end
+
+RSpec.describe 'the pangram? function returns false' do
+    it 'when input is not a pangram (missing characters from the alphabet)' do
+        raise unless pangram?('abcd') == false
+    end
+end
