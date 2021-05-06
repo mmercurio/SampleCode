@@ -15,7 +15,7 @@
 #    Input: nums = [1,-2,5,10], target = -1
 #    Output: [0,1] or [1,0] # 1 + -2 = -1
 
-# The naive, brute force, solution
+# The naive, brute force, solution, i.e., O(n^2) or n-squared.
 # Just compare each integer until a solution is found.
 def naive_two_sums(nums, target)
     for i in 0..nums.size-1
@@ -28,14 +28,16 @@ def naive_two_sums(nums, target)
 end
 
 # Optimized version
+# Because building the map requires traversing the entire array once,
+# this version cannot be better than O(n), even though the hash lookups are O(1).
+# In the worst-case scenario, where the two numbers are located at the end of the array,
+# each element of the array is examined twice (once to build the map, and again to find the sums).
 def two_sums(nums, target)
     # maps each num to its index
     nums_map = nums.each_with_index.to_h
     nums_map.each do |num,index1|
         index2 = nums_map[target - num]
-        if index2 != nil
-            return [ index1, index2 ]
-        end
+        return [ index1, index2 ] unless index2 == nil
     end
 end
 
