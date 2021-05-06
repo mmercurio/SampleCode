@@ -29,10 +29,8 @@ end
 
 # Optimized version
 def two_sums(nums, target)
-    nums_map = {} # maps num to its index in nums array
-    for i in 0..nums.size-1
-        nums_map[nums[i]] = i
-    end
+    # maps each num to its index
+    nums_map = nums.each_with_index.to_h
     nums_map.each do |num,index1|
         index2 = nums_map[target - num]
         if index2 != nil
